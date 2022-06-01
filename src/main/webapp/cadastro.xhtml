@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="content">
+
+		<h:form enctype="multipart/form-data">
+			<p:card style="width: 25em; margin: 1em auto">
+				<f:facet name="title">Cadastro Visitantes</f:facet>
+
+				<div class="ui-fluid">
+					<div class="p-field">
+						<label for="name">Name</label>
+						<p:inputText id="name" type="text" value="#{userBean.user.name}"
+							required="true" requiredMessage="O campo nome é obrigatório">
+
+						</p:inputText>
+					</div>
+					<div class="p-field">
+						<label for="birthday">Birthday</label>
+						<p:datePicker value="#{userBean.user.birthday}" id="birthday"
+							yearNavigator="true" required="true"
+							requiredMessage="O campo birthday é obrigatório" />
+
+					</div>
+					<div class="p-field">
+						<label for="cpf">CPF Number</label>
+						<p:inputText id="cpf" type="numeric" value="#{userBean.user.cpf}"
+							required="true" requiredMessage="O campo CPF é obrigatório"
+							validatorMessage="A CPF deve ter pelo menos 14 Digitos">
+						>
+							<f:validateLength minimum="11" />
+							<f:validateLength maximum="14" />
+						</p:inputText>
+					</div>
+					
+					<div class="p-field">
+						<label for="rg">Identification Card RG</label>
+						<p:inputText id="rg" value="#{userBean.user.rg}" feedback="true"
+							required="true" requiredMessage="O campo RG é obrigatório"
+							validatorMessage="O RG deve ter 8 Digitos">
+						>
+						<f:validateLength minimum="8" />
+
+						</p:inputText>
+					</div>
+					<div class="p-field">
+						<label for="digitoRg">Digit RG</label>
+						<p:inputText id="digitoRg" value="#{userBean.user.digitoRg}"
+							feedback="true" required="true"
+							requiredMessage="O campo digito RG é obrigatório"
+							validatorMessage="A digito RG deve ter somente 1 Digitos">
+						>
+						<f:validateLength maximum="1" />
+
+						</p:inputText>
+					</div>
+					
+					<div class="p-field">
+						<label for="dtCadastro">Registration date </label>
+						<p:datePicker value="#{userBean.user.dtCadastro}" id="dtCadastro"
+							yearNavigator="true" required="true"
+							requiredMessage="O campo Registration date é obrigatório" />
+
+					</div>
+
+					<div class="p-field">
+						<label for="user">Image File: </label>
+						<p:fileUpload value="#{userBean.image}" mode="simple"
+							skinSimple="true" id="image" />
+					</div>
+
+					
+				</div>
+				<f:facet name="footer">
+					<p:commandButton icon="pi pi-check" value="Save"
+						action="#{userBean.save}" />
+					<p:commandButton icon="pi pi-times" value="Cancel"
+						styleClass="ui-button-secondary" style="margin-left: .5em" />
+				</f:facet>
+			</p:card>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+
+</html>

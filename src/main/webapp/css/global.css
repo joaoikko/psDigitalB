@@ -1,0 +1,10 @@
+body{
+	background-color: #ddd;
+	margin-right: 2rem
+}
+
+.thumb{
+	width: 120px;
+	border-radius: 10px;
+}
+
